@@ -2,14 +2,14 @@ import pytest
 
 
 @pytest.fixture()
-def setUp():
+def set_up():
     """Set up the test fixture before exercising it."""
     print("Launching the browser")
     print("Logging in")
     print("Navigating to the application")
 
 
-def test_add_to_cart(setUp):
+def test_add_to_cart(set_up):
     print("Adding item to cart")
 
 
