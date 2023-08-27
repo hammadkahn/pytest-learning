@@ -1,11 +1,11 @@
 import pytest
 
 
-def testlogin():
+def test_login():
     print("Login Successfull")
 
 
-def testlogout():
+def test_logout():
     print("Logout Successfull")
 
 
