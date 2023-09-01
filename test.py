@@ -1,3 +1,5 @@
+import time
+
 import pytest
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -33,13 +35,16 @@ class search_website:
     def __init__(self, driver):
         self.driver = driver
 
-    def search_for_product(self, query):
+    def search_for_product(self):
 
         search_box = WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.CLASS_NAME, "d-block my-5 font-14 gtm-ap-news-link font-weight-semi-bold"))
+            EC.presence_of_element_located((By.ID, "nav-toggle"))
         )
         search_box.click()
-        # search_box.send_keys(query)
+        WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.LINK_TEXT, "Animals & Nature"))
+        ).click()
+        # search_box.send_keys("computer")
         # search_box.submit()
 
 
@@ -72,6 +77,7 @@ def test_search_and_click_first_result(browser):
 
     # search for computer
     search_query1 = "computer"
-    search_website1.search_for_product(search_query1)
+    search_website1.search_for_product()
+    time.sleep(5)
 
     # You can add assertions here to verify the content of the clicked page.
